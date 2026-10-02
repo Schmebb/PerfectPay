@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.schmebb.ledger.LedgerConcurrencyTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-12T20:42:50.008Z" hostname="Mac.lan" time="0.147">
+<testsuite name="com.schmebb.ledger.LedgerConcurrencyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-12T20:54:00.891Z" hostname="Mac.lan" time="0.181">
   <properties/>
-  <testcase name="repetition 1 of 5" classname="com.schmebb.ledger.LedgerConcurrencyTest" time="0.046"/>
+  <testcase name="repetition 1 of 5" classname="com.schmebb.ledger.LedgerConcurrencyTest" time="0.053"/>
   <testcase name="repetition 2 of 5" classname="com.schmebb.ledger.LedgerConcurrencyTest" time="0.026"/>
   <testcase name="repetition 3 of 5" classname="com.schmebb.ledger.LedgerConcurrencyTest" time="0.025"/>
-  <testcase name="repetition 4 of 5" classname="com.schmebb.ledger.LedgerConcurrencyTest" time="0.019"/>
-  <testcase name="repetition 5 of 5" classname="com.schmebb.ledger.LedgerConcurrencyTest" time="0.023"/>
+  <testcase name="repetition 4 of 5" classname="com.schmebb.ledger.LedgerConcurrencyTest" time="0.024"/>
+  <testcase name="repetition 5 of 5" classname="com.schmebb.ledger.LedgerConcurrencyTest" time="0.015"/>
+  <testcase name="oppositeTransfersDoNotDeadlock()" classname="com.schmebb.ledger.LedgerConcurrencyTest" time="0.029"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

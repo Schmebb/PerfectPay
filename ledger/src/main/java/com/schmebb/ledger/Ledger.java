@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * A double-entry ledger. Every posted transaction's entries sum to zero, so money only
  * ever moves between accounts — it is never created or destroyed.
+ *
+ * <p>Append-only. Posted transactions are never edited or deleted; a mistake is corrected by
+ * {@link #reverse(String) reversing} it, which leaves both the mistake and the fix in the history.
  *
  * <p>Thread-safe. Each account has its own lock; a transaction locks every account it touches,
  * always in account-id order, so transfers on unrelated accounts run in parallel and two
@@ -26,18 +30,20 @@ public final class Ledger {
         final ReentrantLock lock = new ReentrantLock();
         /** Guarded by {@link #lock}. */
         final List<Entry> entries = new ArrayList<>();
+        /**
+         * Running total of {@link #entries}, kept so a balance read is O(1) instead of re-summing
+         * the whole history. Guarded by {@link #lock}, and only ever changed alongside an append.
+         */
+        long balance;
 
         AccountState(Account account) {
             this.account = account;
         }
 
         /** Caller must hold {@link #lock}. */
-        long balance() {
-            long balance = 0;
-            for (Entry entry : entries) {
-                balance += entry.amountCents();
-            }
-            return balance;
+        void append(Entry entry) {
+            entries.add(entry);
+            balance += entry.amountCents();
         }
     }
 
@@ -102,7 +108,7 @@ public final class Ledger {
         try {
             // Balances are read under the locks, so they can't change between check and write.
             for (AccountState state : touched) {
-                long balance = state.balance();
+                long balance = state.balance;
                 long change = changes.get(state.account.id());
                 if (state.account.type() == AccountType.CUSTOMER && balance + change < 0) {
                     throw new InsufficientFundsException(state.account.id(), balance, change);
@@ -114,7 +120,7 @@ public final class Ledger {
                 return existing;
             }
             for (Entry entry : entries) {
-                accounts.get(entry.accountId()).entries.add(entry);
+                accounts.get(entry.accountId()).append(entry);
             }
             return transaction;
         } finally {
@@ -137,12 +143,42 @@ public final class Ledger {
                 new Entry(to, amountCents))));
     }
 
+    /**
+     * Undoes a posted transaction by posting its exact opposite, with id {@code txId + ":reversal"}.
+     * The original stays in the history. Idempotent: reversing the same transaction twice returns
+     * the first reversal. Fails with {@link InsufficientFundsException} if a customer has already
+     * spent the money being taken back.
+     */
+    public Transaction reverse(String txId) {
+        Transaction original = transaction(txId)
+                .orElseThrow(() -> new LedgerException("Unknown transaction: " + txId));
+        List<Entry> opposite = original.entries().stream()
+                .map(entry -> new Entry(entry.accountId(), -entry.amountCents()))
+                .toList();
+        return post(new Transaction(txId + ":reversal", clock.instant(), opposite));
+    }
+
+    public Optional<Transaction> transaction(String txId) {
+        return Optional.ofNullable(transactionsById.get(txId));
+    }
+
+    /** Every entry ever posted against the account, oldest first. */
+    public List<Entry> entries(String accountId) {
+        AccountState state = state(accountId);
+        state.lock.lock();
+        try {
+            return List.copyOf(state.entries);
+        } finally {
+            state.lock.unlock();
+        }
+    }
+
     /** The account's balance in cents: the sum of every entry ever posted against it. */
     public long balance(String accountId) {
         AccountState state = state(accountId);
         state.lock.lock();
         try {
-            return state.balance();
+            return state.balance;
         } finally {
             state.lock.unlock();
         }

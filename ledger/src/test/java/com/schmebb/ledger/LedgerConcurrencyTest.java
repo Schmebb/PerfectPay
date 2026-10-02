@@ -14,6 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 class LedgerConcurrencyTest {
 
@@ -68,8 +69,50 @@ class LedgerConcurrencyTest {
         for (String id : ids) {
             long balance = ledger.balance(id);
             assertTrue(balance >= 0, id + " went negative: " + balance);
+            assertEquals(sumOfEntries(ledger, id), balance, id + " running balance drifted from its entries");
             total += balance;
         }
         assertEquals(0, total, "sum of all balances");
+    }
+
+    @Test
+    void oppositeTransfersDoNotDeadlock() throws InterruptedException {
+        Ledger ledger = new Ledger();
+        ledger.openAccount("A", AccountType.CUSTOMER);
+        ledger.openAccount("B", AccountType.CUSTOMER);
+        ledger.transfer(Ledger.FUNDING, "A", 1_000_000_00, "open-A");
+        ledger.transfer(Ledger.FUNDING, "B", 1_000_000_00, "open-B");
+
+        int rounds = 10_000;
+        CountDownLatch start = new CountDownLatch(1);
+        ExecutorService pool = Executors.newFixedThreadPool(2);
+        pool.submit(() -> {
+            start.await();
+            for (int i = 0; i < rounds; i++) {
+                ledger.transfer("A", "B", 1, "ab-" + i);
+            }
+            return null;
+        });
+        pool.submit(() -> {
+            start.await();
+            for (int i = 0; i < rounds; i++) {
+                ledger.transfer("B", "A", 1, "ba-" + i);
+            }
+            return null;
+        });
+        start.countDown();
+        pool.shutdown();
+
+        boolean finished = pool.awaitTermination(10, TimeUnit.SECONDS);
+        if (!finished) {
+            pool.shutdownNow(); // Deadlocked threads ignore interrupts, but don't leave them silently.
+        }
+        assertTrue(finished, "A->B and B->A transfers deadlocked");
+        assertEquals(1_000_000_00, ledger.balance("A"));
+        assertEquals(1_000_000_00, ledger.balance("B"));
+    }
+
+    private static long sumOfEntries(Ledger ledger, String accountId) {
+        return ledger.entries(accountId).stream().mapToLong(Entry::amountCents).sum();
     }
 }

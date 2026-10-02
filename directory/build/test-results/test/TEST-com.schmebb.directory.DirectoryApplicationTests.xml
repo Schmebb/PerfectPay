@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.schmebb.directory.DirectoryApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-12T20:57:59.255Z" hostname="Mac.lan" time="0.759">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.schmebb.directory.DirectoryApplicationTests" time="0.288"/>
+  <system-out><![CDATA[22:57:59.304 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.schmebb.directory.DirectoryApplicationTests]: DirectoryApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:57:59.338 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.schmebb.directory.DirectoryApplication for test class com.schmebb.directory.DirectoryApplicationTests
+22:57:59.363 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.schmebb.directory.DirectoryApplicationTests]: DirectoryApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:57:59.364 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.schmebb.directory.DirectoryApplication for test class com.schmebb.directory.DirectoryApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-12T22:57:59.454+02:00  INFO 94276 --- [directory] [    Test worker] c.s.directory.DirectoryApplicationTests  : Starting DirectoryApplicationTests using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T22:57:59.454+02:00  INFO 94276 --- [directory] [    Test worker] c.s.directory.DirectoryApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T22:57:59.723+02:00  INFO 94276 --- [directory] [    Test worker] c.s.directory.DirectoryApplicationTests  : Started DirectoryApplicationTests in 0.342 seconds (process running for 0.737)
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/kirawebb/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.18.11/82212e5b3633e7a65fca8bec525762cfb6c9bae4/byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
