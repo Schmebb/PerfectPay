@@ -193,4 +193,31 @@ class LedgerTest {
         assertThrows(UnsupportedOperationException.class, () -> transaction.entries().clear());
         assertThrows(UnsupportedOperationException.class, () -> ledger.entries("thandi").clear());
     }
+
+    @Test
+    void postingsShowTransactionAndRunningBalance() {
+        Transaction open = ledger.transfer(Ledger.FUNDING, "thandi", 500_00, "open-thandi");
+        Transaction spend = ledger.transfer("thandi", "sipho", 120_00, "tx-1");
+
+        assertEquals(List.of(
+                new Posting("open-thandi", open.timestamp(), 500_00, 500_00),
+                new Posting("tx-1", spend.timestamp(), -120_00, 380_00)), ledger.postings("thandi"));
+    }
+
+    @Test
+    void accountsCanBeFrozenAndUnfrozen() {
+        assertEquals(Optional.of(new Account("thandi", AccountType.CUSTOMER, false)), ledger.account("thandi"));
+
+        ledger.setFrozen("thandi", true);
+        assertEquals(true, ledger.account("thandi").orElseThrow().frozen());
+
+        ledger.setFrozen("thandi", false);
+        assertEquals(false, ledger.account("thandi").orElseThrow().frozen());
+        assertEquals(Optional.empty(), ledger.account("nobody"));
+    }
+
+    @Test
+    void listsAllAccountsSortedById() {
+        assertEquals(List.of("FUNDING", "sipho", "thandi"), ledger.accounts().stream().map(Account::id).toList());
+    }
 }

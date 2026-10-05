@@ -1,0 +1,61 @@
+# docker compose up --build            → directory, hub, bank A, bank B
+# docker compose --profile metrics up  → the same, plus Prometheus on http://localhost:9090
+
+x-service: &service
+  restart: unless-stopped
+
+services:
+  directory:
+    <<: *service
+    build:
+      context: .
+      args: { MODULE: directory }
+    ports: ["8090:8090"]
+
+  hub:
+    <<: *service
+    build:
+      context: .
+      args: { MODULE: hub }
+    ports: ["8080:8080"]
+    environment:
+      # Participant registry. JSON because environment variables can't carry upper-case map keys.
+      SPRING_APPLICATION_JSON: >-
+        {"hub": {"participants": {"BANK_A": "http://bank-a:8081", "BANK_B": "http://bank-b:8082"}}}
+
+  bank-a:
+    <<: *service
+    build:
+      context: .
+      args: { MODULE: bank }
+    ports: ["8081:8081"]
+    environment:
+      SPRING_APPLICATION_NAME: bank-a
+      BANK_CODE: BANK_A
+      SERVER_PORT: "8081"
+      HUB_URL: http://hub:8080
+      DIRECTORY_URL: http://directory:8090
+    # Start order is only a head start: banks keep retrying phone registration until the directory is up.
+    depends_on: [directory, hub]
+
+  bank-b:
+    <<: *service
+    build:
+      context: .
+      args: { MODULE: bank }
+    ports: ["8082:8082"]
+    environment:
+      SPRING_APPLICATION_NAME: bank-b
+      BANK_CODE: BANK_B
+      SERVER_PORT: "8082"
+      HUB_URL: http://hub:8080
+      DIRECTORY_URL: http://directory:8090
+    depends_on: [directory, hub]
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    profiles: [metrics]
+    ports: ["9090:9090"]
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on: [hub, bank-a, bank-b]

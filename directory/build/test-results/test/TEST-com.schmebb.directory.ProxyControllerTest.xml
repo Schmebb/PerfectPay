@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.schmebb.directory.ProxyControllerTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-12T20:58:00.015Z" hostname="Mac.lan" time="0.759">
+<testsuite name="com.schmebb.directory.ProxyControllerTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-12T21:32:35.437Z" hostname="Mac.lan" time="0.876">
   <properties/>
-  <testcase name="sameNumberInOtherFormatIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.05"/>
+  <testcase name="sameNumberInOtherFormatIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.051"/>
   <testcase name="badlyFormattedLookupIs404()" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
   <testcase name="localFormatIsStoredInInternationalForm()" classname="com.schmebb.directory.ProxyControllerTest" time="0.013"/>
   <testcase name="registersAndResolvesAProxy()" classname="com.schmebb.directory.ProxyControllerTest" time="0.004"/>
-  <testcase name="blankAccountIdIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
-  <testcase name="missingBankCodeIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
-  <testcase name="alreadyRegisteredNumberIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.005"/>
-  <testcase name="unknownNumberIs404()" classname="com.schmebb.directory.ProxyControllerTest" time="0.002"/>
-  <testcase name="malformedJsonIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.002"/>
+  <testcase name="blankAccountIdIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.004"/>
+  <testcase name="missingBankCodeIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.004"/>
+  <testcase name="alreadyRegisteredNumberIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.007"/>
+  <testcase name="unknownNumberIs404()" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
+  <testcase name="malformedJsonIsRejected()" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
   <testcase name="[1] phone = &quot;&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.005"/>
   <testcase name="[2] phone = &quot;hello&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.004"/>
   <testcase name="[3] phone = &quot;821234567&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
   <testcase name="[4] phone = &quot;082123456&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
-  <testcase name="[5] phone = &quot;08212345678&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
-  <testcase name="[6] phone = &quot;0121234567&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.002"/>
-  <testcase name="[7] phone = &quot;+44821234567&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
+  <testcase name="[5] phone = &quot;08212345678&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.004"/>
+  <testcase name="[6] phone = &quot;0121234567&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.004"/>
+  <testcase name="[7] phone = &quot;+44821234567&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.008"/>
   <testcase name="[8] phone = &quot;+27 82 123 4567&quot;" classname="com.schmebb.directory.ProxyControllerTest" time="0.003"/>
-  <system-out><![CDATA[2026-10-12T22:58:00.017+02:00  INFO 94276 --- [directory] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.schmebb.directory.ProxyControllerTest]: ProxyControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-10-12T22:58:00.022+02:00  INFO 94276 --- [directory] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.schmebb.directory.DirectoryApplication for test class com.schmebb.directory.ProxyControllerTest
-2026-10-12T22:58:00.022+02:00  INFO 94276 --- [directory] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.schmebb.directory.ProxyControllerTest]: ProxyControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-10-12T22:58:00.024+02:00  INFO 94276 --- [directory] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.schmebb.directory.DirectoryApplication for test class com.schmebb.directory.ProxyControllerTest
+  <system-out><![CDATA[2026-10-12T23:32:35.438+02:00  INFO 96603 --- [directory] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.schmebb.directory.ProxyControllerTest]: ProxyControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-12T23:32:35.443+02:00  INFO 96603 --- [directory] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.schmebb.directory.DirectoryApplication for test class com.schmebb.directory.ProxyControllerTest
+2026-10-12T23:32:35.443+02:00  INFO 96603 --- [directory] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.schmebb.directory.ProxyControllerTest]: ProxyControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-12T23:32:35.445+02:00  INFO 96603 --- [directory] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.schmebb.directory.DirectoryApplication for test class com.schmebb.directory.ProxyControllerTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -32,12 +32,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.035+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.035+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.086+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.086+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.087+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.091+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.065 seconds (process running for 1.104)
+2026-10-12T23:32:35.455+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.455+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.502+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.502+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.503+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-12T23:32:35.507+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.06 seconds (process running for 1.195)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -48,12 +48,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.151+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.151+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.189+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.189+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.190+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.192+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.048 seconds (process running for 1.206)
+2026-10-12T23:32:35.567+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.567+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.607+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.607+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.608+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-12T23:32:35.610+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.049 seconds (process running for 1.298)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -64,12 +64,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.203+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.203+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.238+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.238+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.239+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.241+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.044 seconds (process running for 1.254)
+2026-10-12T23:32:35.621+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.621+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.653+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.653+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.654+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-12T23:32:35.655+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.04 seconds (process running for 1.344)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -80,12 +80,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.261+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.261+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.290+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.290+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.291+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-10-12T22:58:00.293+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.037 seconds (process running for 1.306)
+2026-10-12T23:32:35.676+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.676+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.707+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.707+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.707+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-12T23:32:35.709+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.038 seconds (process running for 1.398)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -96,12 +96,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.304+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.304+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.333+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.333+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.333+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.335+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.037 seconds (process running for 1.348)
+2026-10-12T23:32:35.721+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.721+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.751+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.752+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.752+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-12T23:32:35.754+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.039 seconds (process running for 1.442)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -112,12 +112,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.344+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.344+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.371+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.371+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.371+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.373+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.034 seconds (process running for 1.386)
+2026-10-12T23:32:35.765+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.765+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.794+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.795+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.795+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-12T23:32:35.797+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.038 seconds (process running for 1.485)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -128,12 +128,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.383+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.383+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.410+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.410+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.411+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-10-12T22:58:00.413+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.035 seconds (process running for 1.426)
+2026-10-12T23:32:35.807+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.807+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.835+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.835+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.836+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-12T23:32:35.837+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.035 seconds (process running for 1.526)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -144,12 +144,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.423+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.423+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.449+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.449+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.449+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.452+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.032 seconds (process running for 1.465)
+2026-10-12T23:32:35.859+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.859+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.888+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.888+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.889+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-12T23:32:35.890+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.041 seconds (process running for 1.578)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -160,13 +160,13 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.459+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.459+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.484+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.484+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.485+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-10-12T22:58:00.486+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.031 seconds (process running for 1.499)
-2026-10-12T22:58:00.488+02:00  WARN 94276 --- [directory] [    Test worker] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('n' (code 110)): was expecting double-quote to start property name]
+2026-10-12T23:32:35.899+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.899+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.927+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.927+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.927+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-12T23:32:35.929+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.035 seconds (process running for 1.617)
+2026-10-12T23:32:35.932+02:00  WARN 96603 --- [directory] [    Test worker] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('n' (code 110)): was expecting double-quote to start property name]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -177,12 +177,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.502+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.502+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.527+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.527+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.527+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.529+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.032 seconds (process running for 1.542)
+2026-10-12T23:32:35.948+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.948+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:35.973+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:35.973+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:35.974+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-12T23:32:35.975+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.032 seconds (process running for 1.663)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -193,12 +193,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.542+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.542+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.567+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.567+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.568+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-10-12T22:58:00.569+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.032 seconds (process running for 1.582)
+2026-10-12T23:32:35.988+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:35.988+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:36.013+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:36.013+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:36.013+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-12T23:32:36.015+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.031 seconds (process running for 1.703)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -209,12 +209,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.579+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.579+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.602+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.602+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.602+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.604+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.03 seconds (process running for 1.617)
+2026-10-12T23:32:36.025+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:36.025+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:36.050+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:36.050+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:36.051+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-12T23:32:36.052+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.032 seconds (process running for 1.74)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -225,12 +225,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.612+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.612+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.637+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.637+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.637+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.638+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.03 seconds (process running for 1.652)
+2026-10-12T23:32:36.061+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:36.061+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:36.086+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:36.086+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:36.086+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-12T23:32:36.087+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.031 seconds (process running for 1.775)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -241,12 +241,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.647+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.647+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.671+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.671+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.671+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.673+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.029 seconds (process running for 1.686)
+2026-10-12T23:32:36.096+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:36.096+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:36.121+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:36.121+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:36.122+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-12T23:32:36.123+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.031 seconds (process running for 1.811)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -257,12 +257,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.681+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.681+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.704+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.704+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.704+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.706+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.029 seconds (process running for 1.719)
+2026-10-12T23:32:36.135+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:36.135+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:36.181+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:36.181+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:36.181+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-12T23:32:36.183+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.054 seconds (process running for 1.871)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -273,12 +273,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.714+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.715+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.737+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.737+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.737+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.738+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.028 seconds (process running for 1.752)
+2026-10-12T23:32:36.194+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:36.194+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:36.225+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:36.225+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:36.225+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-12T23:32:36.227+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.039 seconds (process running for 1.915)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -289,12 +289,12 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-12T22:58:00.746+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 94276 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
-2026-10-12T22:58:00.746+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-10-12T22:58:00.769+02:00  INFO 94276 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-12T22:58:00.769+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-12T22:58:00.770+02:00  INFO 94276 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-10-12T22:58:00.771+02:00  INFO 94276 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.029 seconds (process running for 1.784)
+2026-10-12T23:32:36.263+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Starting ProxyControllerTest using Java 21.0.12.1 with PID 96603 (started by kirawebb in /Users/kirawebb/Desktop/PayPen/directory)
+2026-10-12T23:32:36.263+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T23:32:36.307+02:00  INFO 96603 --- [directory] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-12T23:32:36.307+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-12T23:32:36.308+02:00  INFO 96603 --- [directory] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-12T23:32:36.309+02:00  INFO 96603 --- [directory] [    Test worker] c.schmebb.directory.ProxyControllerTest  : Started ProxyControllerTest in 0.07 seconds (process running for 1.997)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

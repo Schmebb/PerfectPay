@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: paypen
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets: ["directory:8090", "hub:8080", "bank-a:8081", "bank-b:8082"]

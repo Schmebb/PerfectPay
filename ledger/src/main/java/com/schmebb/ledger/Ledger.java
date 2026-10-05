@@ -2,6 +2,7 @@ package com.schmebb.ledger;
 
 import java.time.Clock;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +27,13 @@ public final class Ledger {
     public static final String FUNDING = "FUNDING";
 
     private static final class AccountState {
-        final Account account;
+        /** Replaced (never mutated) when the frozen flag changes; id and type never change. */
+        volatile Account account;
         final ReentrantLock lock = new ReentrantLock();
         /** Guarded by {@link #lock}. */
-        final List<Entry> entries = new ArrayList<>();
+        final List<Posting> postings = new ArrayList<>();
         /**
-         * Running total of {@link #entries}, kept so a balance read is O(1) instead of re-summing
+         * Running total of {@link #postings}, kept so a balance read is O(1) instead of re-summing
          * the whole history. Guarded by {@link #lock}, and only ever changed alongside an append.
          */
         long balance;
@@ -41,9 +43,9 @@ public final class Ledger {
         }
 
         /** Caller must hold {@link #lock}. */
-        void append(Entry entry) {
-            entries.add(entry);
+        void append(Transaction transaction, Entry entry) {
             balance += entry.amountCents();
+            postings.add(new Posting(transaction.id(), transaction.timestamp(), entry.amountCents(), balance));
         }
     }
 
@@ -66,6 +68,34 @@ public final class Ledger {
             throw new LedgerException("Account already exists: " + id);
         }
         return account;
+    }
+
+    /** All accounts, sorted by id. */
+    public List<Account> accounts() {
+        return accounts.values().stream()
+                .map(state -> state.account)
+                .sorted(Comparator.comparing(Account::id))
+                .toList();
+    }
+
+    public Optional<Account> account(String id) {
+        AccountState state = accounts.get(id);
+        return state == null ? Optional.empty() : Optional.of(state.account);
+    }
+
+    /**
+     * Sets the account's frozen flag. The ledger only records it; callers such as a bank decide
+     * what a frozen account may or may not do.
+     */
+    public Account setFrozen(String accountId, boolean frozen) {
+        AccountState state = state(accountId);
+        state.lock.lock();
+        try {
+            state.account = new Account(state.account.id(), state.account.type(), frozen);
+            return state.account;
+        } finally {
+            state.lock.unlock();
+        }
     }
 
     /**
@@ -120,7 +150,7 @@ public final class Ledger {
                 return existing;
             }
             for (Entry entry : entries) {
-                accounts.get(entry.accountId()).append(entry);
+                accounts.get(entry.accountId()).append(transaction, entry);
             }
             return transaction;
         } finally {
@@ -164,10 +194,17 @@ public final class Ledger {
 
     /** Every entry ever posted against the account, oldest first. */
     public List<Entry> entries(String accountId) {
+        return postings(accountId).stream()
+                .map(posting -> new Entry(accountId, posting.amountCents()))
+                .toList();
+    }
+
+    /** The account's history, oldest first, with the transaction and running balance for each entry. */
+    public List<Posting> postings(String accountId) {
         AccountState state = state(accountId);
         state.lock.lock();
         try {
-            return List.copyOf(state.entries);
+            return List.copyOf(state.postings);
         } finally {
             state.lock.unlock();
         }

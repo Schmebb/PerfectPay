@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.schmebb.ledger.LedgerTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-12T20:54:01.073Z" hostname="Mac.lan" time="0.01">
+<testsuite name="com.schmebb.ledger.LedgerTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-10-12T21:19:14.445Z" hostname="Mac.lan" time="0.013">
   <properties/>
   <testcase name="insufficientFundsFails()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
   <testcase name="systemAccountCanGoNegative()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
-  <testcase name="zeroAmountFails()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
+  <testcase name="zeroAmountFails()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
+  <testcase name="accountsCanBeFrozenAndUnfrozen()" classname="com.schmebb.ledger.LedgerTest" time="0.004"/>
   <testcase name="unbalancedTransactionIsRejected()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
-  <testcase name="singleEntryTransactionIsRejected()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
+  <testcase name="listsAllAccountsSortedById()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
+  <testcase name="singleEntryTransactionIsRejected()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
   <testcase name="reversingUnknownTransactionFails()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
-  <testcase name="unknownAccountFails()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
-  <testcase name="balancedTransactionWithMoreThanTwoEntriesPosts()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
+  <testcase name="unknownAccountFails()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
+  <testcase name="balancedTransactionWithMoreThanTwoEntriesPosts()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
+  <testcase name="postingsShowTransactionAndRunningBalance()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
   <testcase name="fundingGivesOpeningBalanceAndKeepsTotalAtZero()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
   <testcase name="reversingTwiceReversesOnce()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
   <testcase name="reverseFailsIfMoneyAlreadySpent()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
   <testcase name="replayWithDifferentContentStillReturnsOriginal()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
-  <testcase name="balancedTransactionPosts()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
+  <testcase name="balancedTransactionPosts()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
   <testcase name="postedEntriesCannotBeModified()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
   <testcase name="postingSameIdTwiceReturnsOriginalAndPostsOnce()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
   <testcase name="negativeAmountFails()" classname="com.schmebb.ledger.LedgerTest" time="0.001"/>
-  <testcase name="reverseRestoresBalancesAndKeepsBothInHistory()" classname="com.schmebb.ledger.LedgerTest" time="0.003"/>
+  <testcase name="reverseRestoresBalancesAndKeepsBothInHistory()" classname="com.schmebb.ledger.LedgerTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

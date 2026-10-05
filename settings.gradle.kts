@@ -1,6 +1,4 @@
 rootProject.name = "paypen"
 
-include("ledger", "common", "directory")
-// Added in later phases:
-// include("bank")      // Phase 4
-// include("hub")       // Phase 5
+include("ledger", "common", "directory", "bank", "hub")
+include("integration-tests") // runs all four services together
