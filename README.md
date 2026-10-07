@@ -25,85 +25,9 @@ To make that work, a scheme needs the same pieces PayPen models:
   rules (such as the limit), and keeps track of what the banks owe each other
 - **banks** that hold their customers' money in a ledger, send payments, and credit incoming ones
 
-## Architecture
 
-```mermaid
-flowchart LR
-    customer([Thandi's banking app])
 
-    subgraph A["BANK_A :8081"]
-        ledgerA[(Ledger)]
-    end
-    subgraph B["BANK_B :8082"]
-        ledgerB[(Ledger)]
-    end
 
-    directory["Directory :8090<br/>phone → bank + account"]
-    hub["Hub :8080<br/>routing · limits · settlement"]
-
-    customer -- "POST /customer-payments" --> A
-    A -- "GET /proxies/{phone}" --> directory
-    B -. "registers customers' phones on startup" .-> directory
-    A -. "registers customers' phones on startup" .-> directory
-    A -- "POST /payments<br/>GET /payments/{id}" --> hub
-    hub -- "POST /incoming-payments" --> B
-```
-
-### The happy path: Thandi pays Sipho R120
-
-```mermaid
-sequenceDiagram
-    actor T as Thandi
-    participant A as BANK_A
-    participant D as Directory
-    participant H as Hub
-    participant B as BANK_B
-
-    T->>A: pay R120 to 083 123 4567
-    A->>D: who is +27831234567?
-    D-->>A: BANK_B / sipho
-    Note over A: hold: thandi → OUTGOING_SUSPENSE
-    A->>H: PaymentInstruction(pay-1, R120 → BANK_B/sipho)
-    Note over H: validate, store PENDING
-    H->>B: forward (5s timeout)
-    Note over B: SCHEME_SETTLEMENT → sipho
-    B-->>H: ACCEPTED
-    Note over H: store ACCEPTED
-    H-->>A: ACCEPTED
-    Note over A: capture: OUTGOING_SUSPENSE → SCHEME_SETTLEMENT
-    A-->>T: COMPLETED
-```
-
-### When a response is lost
-
-The hard case: BANK_B credits Sipho, but its answer never reaches the hub. Nobody upstream
-knows whether Sipho was paid. Refunding Thandi would pay out the money twice; capturing it
-blindly could take her money for a payment that didn't happen. So nobody guesses.
-
-```mermaid
-sequenceDiagram
-    participant A as BANK_A
-    participant H as Hub
-    participant B as BANK_B
-
-    A->>H: pay-1
-    H->>B: forward
-    Note over B: credits Sipho
-    B--xH: (answer lost)
-    Note over H: timeout → stays PENDING
-    H-->>A: PENDING
-    Note over A: money stays in suspense (SENT)
-
-    loop hub retry job, every 5s
-        H->>B: forward pay-1 again
-        B-->>H: ACCEPTED (seen this id: same answer, no second credit)
-    end
-    loop bank enquiry job, every 5s
-        A->>H: GET /payments/pay-1
-        H-->>A: ACCEPTED
-    end
-    Note over A: capture → COMPLETED
-```
 
 ## Project structure
 
@@ -124,28 +48,7 @@ PayPen/
 └── integration-tests/           ← starts all four services in one JVM and runs every scenario
 ```
 
-`ledger/CONCURRENCY_NOTES.md` describes how the ledger was made thread-safe: what broke
-without locks, and why lock order matters.
 
-## Running it
-
-### With Docker
-
-```bash
-docker compose up --build
-```
-
-That builds the code inside Docker (no local Java needed) and starts:
-
-| Service   | URL                   |
-|-----------|-----------------------|
-| hub       | http://localhost:8080 |
-| BANK_A    | http://localhost:8081 |
-| BANK_B    | http://localhost:8082 |
-| directory | http://localhost:8090 |
-
-The services can start in any order: banks keep retrying their phone registrations until the
-directory is up. Stop with Ctrl+C. All data is in memory, so every start begins fresh.
 
 ### Without Docker
 
@@ -161,72 +64,8 @@ java -jar bank/build/libs/bank-0.1.0-SNAPSHOT.jar --spring.profiles.active=bank-
 
 Run each `java -jar` in its own terminal.
 
-### The demo
 
-With everything running:
 
-```bash
-./demo.sh
-```
-
-It pays Thandi → Sipho, then walks through a duplicate, an unknown number, insufficient funds,
-a frozen payee, the scheme limit, and a lost response, printing balances along the way and
-finishing with the settlement report and a check that every ledger sums to zero. It only needs
-`bash` and `curl`.
-
-### Seed data
-
-| Bank   | Customer | Phone        | Opening balance |
-|--------|----------|--------------|-----------------|
-| BANK_A | thandi   | 082 123 4567 | R500            |
-| BANK_A | lerato   | 072 123 4567 | R300            |
-| BANK_A | zanele   | 084 123 4567 | R50 (frozen)    |
-| BANK_B | sipho    | 083 123 4567 | R250            |
-| BANK_B | bongani  | 073 123 4567 | R100 (frozen)   |
-
-### Try it by hand
-
-```bash
-# Thandi pays Sipho R120
-curl -H 'Content-Type: application/json' localhost:8081/customer-payments \
-  -d '{"paymentId":"pay-1","fromAccount":"thandi","toPhone":"0831234567","amountCents":12000}'
-
-curl localhost:8081/accounts/thandi        # balance and every entry
-curl localhost:8082/admin/ledger           # every account at BANK_B; total is always 0
-curl localhost:8080/payments/pay-1         # the hub's status enquiry
-curl localhost:8080/settlement             # "BANK_A owes BANK_B R120.00"
-```
-
-### Tests
-
-```bash
-./gradlew test
-```
-
-Runs the unit tests for each module and `integration-tests`, which starts the directory, hub
-and both banks as real servers and runs every scenario below. After each scenario it checks
-the books: every ledger sums to zero, nothing is left in suspense, the two banks'
-`SCHEME_SETTLEMENT` balances mirror each other, and both match the hub's settlement report.
-CI runs the same command on every push.
-
-### Metrics
-
-Every service exposes `/actuator/health` and `/actuator/prometheus`. To scrape them:
-
-```bash
-docker compose --profile metrics up --build
-```
-
-Then open Prometheus at http://localhost:9090 and try:
-
-| Question | Query |
-|---|---|
-| Payments per second through the hub | `rate(paypen_hub_payments_received_total[1m])` |
-| Rejections, by who rejected | `sum by (rejected_by) (rate(paypen_hub_payments_decided_total{status="REJECTED"}[5m]))` |
-| Payee bank latency, 95th percentile | `histogram_quantile(0.95, sum by (le, bank) (rate(paypen_hub_payee_latency_seconds_bucket[5m])))` |
-| Payee bank timeouts | `rate(paypen_hub_payee_timeouts_total[5m])` |
-| Customer payment outcomes per bank | `sum by (bank, status) (rate(paypen_bank_customer_payments_total[5m]))` |
-| Customer-facing latency | `histogram_quantile(0.95, sum by (le, bank) (rate(paypen_bank_customer_payment_latency_seconds_bucket[5m])))` |
 
 ## API
 
@@ -319,24 +158,5 @@ than exists. `BigDecimal` would also be exact, but is slower and easier to misus
 transfer locks the accounts it touches, always sorted by id, so two opposite transfers can never
 deadlock. See `ledger/CONCURRENCY_NOTES.md`.
 
-## Known limitations
 
-- **Everything is in memory.** Restarting a service loses its ledger, payments, and directory. A
-  real system needs durable storage, and the hold/send/capture steps would need to survive a
-  crash halfway through (an outbox or a write-ahead log).
-- **No authentication.** Anyone who can reach a service can call it, including `/admin` and
-  `/admin/chaos`. Any bank can register any phone number in the directory.
-- **Single instance per service.** Locks and the retry and enquiry jobs assume one copy of each
-  service; running two would need distributed locking or a database to coordinate.
-- **Settlement is a report, not a movement of money.** Real schemes settle between banks'
-  accounts at the central bank; here the report only says who owes whom.
-- **Simplified messages.** Real schemes use ISO 20022 messages, reason codes, and much stricter
-  validation. Rejection reasons here are free text.
-- **"Never arrived" is a heuristic.** If the hub has no record of a payment 60 seconds after it
-  was sent, the bank refunds it. A request delayed longer than that could still, in theory,
-  arrive later.
-- **No timeouts on directory calls.** A hung directory would make a customer payment hang.
-- **Unknown outcomes are retried forever.** A payment stuck in PENDING or SENT is retried every
-  5s with no back-off, alerting, or manual override.
-- **No customer view of a payee's name.** Real apps show "You're paying S. Dlamini" before
-  confirming; this returns the account id after the payment.
+
